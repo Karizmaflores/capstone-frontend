@@ -1,25 +1,22 @@
-import React from 'react'
-import { Link } from 'react-router-dom';
+import React from 'react';
+import { useEffect, useState } from 'react'
 
-const Header = () => {
+
+const Dashboard= () => {
+    const [data, setData] = useState([])
+    useEffect(() => {
+        fetch("https://capstone-backend-beta.vercel.app/users")
+        .then((res) => res.json())
+        .then((data) => setData(data));
+    }, []);
+
   return (
-    <header >
-    <h1>Juice Calculator</h1>
-    <nav>
-        <ul>
-            <li>
-                <Link to="/signup">Signup</Link>
-            </li>
-            <li>
-                <Link to="/signin">Signin</Link>
-            </li>
-            <li>
-                <Link to="/">Dashboard</Link>
-            </li>
-        </ul>
-    </nav>
-    </header>
-  )
-}
+   <div>
+    {data.map((user) => (
+        <h2 key={user.id}>{user.email}</h2>
+    ))}
+    </div>
+  );
+};
 
-export default Header;
+export default Dashboard;

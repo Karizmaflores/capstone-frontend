@@ -15,27 +15,20 @@ const signinContent = {
     buttonText: "Signin!",
 };
 
-const AuthForm = ({ formType = "signup"}) => {
+const AuthForm = ({ formType = "signup", setToken}) => {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
-    const [token, setToken] = useState("");
+    
     const [message, setMessage] = useState("");
 
-    // useEffect(() => {
-    //     console.log(email)
-    // }, [email]);
-
-    // useEffect(() => {
-    //     console.log(password)
-    // }, [password]);
     const content = formType === "signup" ? signupContent : signinContent;
 
-    useEffect(() => {
-        console.log(token);
-    }, [token]);
+    // useEffect(() => {
+    //     console.log({token});
+    // }, [token]);
 
     useEffect(() => {
-        console.log(message);
+        console.log({message});
     }, [message]);
 
     const handleSubmit = (e) => {
@@ -48,10 +41,10 @@ const AuthForm = ({ formType = "signup"}) => {
             password,
         })
         .then((res) => {
-            if (formType === "signup"){
+            if (formType === 'signup'){
             setMessage(res.data.message);
         } else {
-            setToken(res.data);
+            setToken(res.data.token);
         }
         });
     };
