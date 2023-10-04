@@ -1,0 +1,7 @@
+.recipes{
+    display: grid;
+    gap:24px;
+    justify-content: center;
+    grid-template-rows: min-content 1 fr;
+  }
+  

@@ -1,23 +1,27 @@
-import React from 'react';
+// import React from 'react';
 import { Link } from 'react-router-dom';
+// import '../index.css';
+import '../css/header.css';
 
 const Header = () => {
   return (
     <header >
+    <div className="header-container">
     <h1>Juice Calculator</h1>
-    <nav>
-        <ul>  
-        <li>
-                <Link to="/signup">Signup</Link>
-            </li>
+        <nav className="navbar">
+            <ul>  
             <li>
-                <Link to="/signin">Signin</Link>
-            </li>
-            <li>
-                <Link to="/">Dashboard</Link>
-            </li>
-        </ul>
-    </nav>
+                    <Link to="/signup">Signup</Link>
+                </li>
+                <li>
+                    <Link to="/signin">Signin</Link>
+                </li>
+                <li>
+                    <Link to="/">Dashboard</Link>
+                </li>
+            </ul>
+        </nav>
+    </div>
     </header>
   )
 }

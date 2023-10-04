@@ -1,6 +1,9 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
-import styles from "./AuthForm.module.css"
+import styles from "./AuthForm.module.css";
+import "../css/form.css";
+import{Link, useNavigate} from 'react-router-dom';
+
 
 
 const signupContent = {
@@ -18,8 +21,8 @@ const signinContent = {
 const AuthForm = ({ formType = "signup", setToken}) => {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
-    
     const [message, setMessage] = useState("");
+    const navigate = useNavigate();
 
     const content = formType === "signup" ? signupContent : signinContent;
 
@@ -45,24 +48,27 @@ const AuthForm = ({ formType = "signup", setToken}) => {
             setMessage(res.data.message);
         } else {
             setToken(res.data.token);
+            navigate('/');
         }
         });
+
+        // navigate("/");
     };
 
 
 
   return (
-    <form onSubmit={handleSubmit}>
-    <h2>{content.title}</h2>
-    <label className = {styles.label}>
-        Email:
-        <input type="email" onChange={(e) => setEmail(e.target.value)} />
-    </label>
-    <label className = {styles.label}>
-        Password
-        <input type="password" onChange={(e) => setPassword(e.target.value)}/>
-    </label>
-    <input type="submit" value={content.buttomText} />
+    <form className="form" onSubmit={handleSubmit}>
+        <h2>{content.title}</h2>
+        <label className = {styles.label}>
+            Email:
+            <input type="email" onChange={(e) => setEmail(e.target.value)} />
+        </label>
+        <label className = {styles.label}>
+            Password:
+            <input type="password" onChange={(e) => setPassword(e.target.value)}/>
+        </label>
+        <input type="submit" value={content.buttonText} />
     </form>
   )
 }
