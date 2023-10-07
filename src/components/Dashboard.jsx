@@ -11,35 +11,70 @@ import '../css/dashboard.css';
 //         .then((data) => setData(data));
 //     }, []);
 
-    const Dashboard= () => {
-      const [data, setData] = useState([]);
-      useEffect(() => {
-          fetch("https://capstone-backend-beta.vercel.app/vinyl")
-          .then((res) => res.json())
-          .then((responseData) => {
-              console.log(responseData); // Log the API response data
-              setData(responseData);
-          })
-          .catch((error) => {
-              console.error("Error fetching data:", error);
-          });
-      }, []);
 
-      //lists users emails
+//LISTS USERS EMAILS
   // return (
-  //  <div className='recipes'>
+  //  <div className='emails'>
   //   {data.map((user) => (
   //       <h2 key={user.id}>{user.email}</h2>
   //   ))}
   //   </div>
   // );
 
-  //lists vinyl
-  return (
-    <div className='vinyl'>
+
+  //LISTS VINYLS
+    // const Dashboard= () => {
+    //   const [data, setData] = useState([]);
+    //   useEffect(() => {
+    //       fetch("https://capstone-backend-beta.vercel.app/vinyl")
+    //       .then((res) => res.json())
+    //       .then((responseData) => {
+    //           console.log(responseData); // Log the API response data
+    //           setData(responseData);
+    //       })
+    //       .catch((error) => {
+    //           console.error("Error fetching data:", error);
+    //       });
+    //   }, []);
+
+
+
+//LISTS COUCHES
+const Dashboard= () => {
+    console.log("testDash");
+    const [data, setData] = useState([]);
+    useEffect(() => {
+        fetch("https://capstone-backend-beta.vercel.app/couches")
+        .then((res) => res.json())
+        .then((responseData) => {
+            console.log(responseData); // Log the API response data
+            setData(responseData);
+         })
+         .catch((error) => {
+            console.error("Error fetching data:", error);
+        });
+    }, []);
+  
+
+
+  //lists vinyl, jsx not html
+//   return (
+//     <div className='vinyl'>
+//         {Array.isArray(data) ? (
+//             data.map((vinyl) => ( 
+//                 <h2 key={vinyl.id}>{vinyl.album}</h2>
+//             ))
+//         ) : (
+//             <p>No data available.</p>
+//         )}
+//     </div>
+//    );
+
+   return (
+    <div className='couches'>
         {Array.isArray(data) ? (
-            data.map((vinyl) => ( //issue right here
-                <h2 key={vinyl.id}>{vinyl.album}</h2>
+            data.map((couches) => ( 
+                <h2 key={couches.id}>{couches.material}{couches.color}</h2>
             ))
         ) : (
             <p>No data available.</p>
