@@ -1,5 +1,7 @@
 import { useEffect, useState } from 'react'
 import '../css/dashboard.css';
+import axios from 'axios';
+import Image from "./Images"
 
 //FOR USERS
 // const Dashboard= () => {
@@ -40,29 +42,26 @@ import '../css/dashboard.css';
 
 
 //LISTS COUCHES
-const Dashboard= () => {
-    console.log("testDash");
-    const [data, setData] = useState([]);
-    useEffect(() => {
-        fetch("https://capstone-backend-beta.vercel.app/couches")
-        .then((res) => res.json())
-        .then((responseData) => {
-            console.log(responseData); // Log the API response data
-            setData(responseData);
-         })
-         .catch((error) => {
-            console.error("Error fetching data:", error);
-        });
-    }, []);
+// const Dashboard= () => {
+//     // console.log("testDash");
+//     const [data, setData] = useState([]);
+//     useEffect(() => {
+//         fetch("https://capstone-backend-beta.vercel.app/couches")
+//         .then((res) => res.json())
+//         .then((responseData) => {
+//             console.log(responseData); // Log the API response data
+//             setData(responseData);
+//          })
+//          .catch((error) => {
+//             console.error("Error fetching data:", error);
+//         });
+//     }, []);
   
-
-
-  //lists vinyl, jsx not html
-//   return (
-//     <div className='vinyl'>
+//    return (
+//     <div className='couches'>
 //         {Array.isArray(data) ? (
-//             data.map((vinyl) => ( 
-//                 <h2 key={vinyl.id}>{vinyl.album}</h2>
+//             data.map((couches) => ( 
+//                 <h2 key={couches.id}>{couches.material}{couches.color}</h2>
 //             ))
 //         ) : (
 //             <p>No data available.</p>
@@ -70,19 +69,41 @@ const Dashboard= () => {
 //     </div>
 //    );
 
-   return (
-    <div className='couches'>
-        {Array.isArray(data) ? (
-            data.map((couches) => ( 
-                <h2 key={couches.id}>{couches.material}{couches.color}</h2>
-            ))
-        ) : (
-            <p>No data available.</p>
-        )}
-    </div>
-   );
-
   
-};
+// };
 
-export default Dashboard;
+function ShowCouchPics(){
+
+    const [images, setImages] = useState([]);
+    const unsplashApiKey = import.meta.env.VITE_REACT_APP_UNSPLASH_API_KEY;
+
+
+    useEffect(() => {
+        const fetchImages = async () => {
+            const response = await fetch(`https://api.unsplash.com/collections/8700800/photos/?client_id=${unsplashApiKey}`)
+            const data = await response.json()
+            setImages(data)
+            console.log(data);
+        }
+        fetchImages()
+    }, [])
+
+    return(
+        <div className="images">
+            {!images ? <h2 className='LoadingImagesText'>Loading...</h2> :
+            <section className='couchList'>
+                <div className='couchDisplay'>
+                    {images.map((image) => (
+                        <Image key={image.id}{...image}/>
+                    ))}
+                </div>
+            </section>
+            }
+        </div>
+    )
+    
+}
+
+// export default Dashboard; showCouchPics;
+export default ShowCouchPics;
+
