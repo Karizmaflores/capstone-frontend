@@ -3,10 +3,11 @@
     grid-template-columns: 400px;
     row-gap: 8px;
     justify-content: center;
+    font-family: 'Open Sans', sans-serif;
   }
   
   .label{
-    font-family: Arial, Helvetica, sans-serif;
+    font-family: 'Open Sans', sans-serif;
     display: block;
   }
   
@@ -15,15 +16,18 @@
     padding: 6px 0;
     margin-top: 4px;
     font-size: 16px;
-    width: calc(100% - 3px);
+    /* width: calc(100% - 3px); */
+    font-family: 'Open Sans', sans-serif;
   }
   
   .submit {
     width: 100%;
     text-transform: uppercase;
     padding: 8px 0;
+    margin-bottom: 50px;
     background-color: rgba(0,0,0,0);
     border: 1px solid black;
+    font-family: 'Open Sans', sans-serif;
   }
   
   .submit:hover {

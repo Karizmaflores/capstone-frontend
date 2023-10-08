@@ -6,6 +6,8 @@ import AuthForm from './components/AuthForm';
 import Dashboard from './components/Dashboard';
 import Header from './components/Header';
 
+
+
 const checkAuth = (token) => {
   if(token.length) {
     return true;

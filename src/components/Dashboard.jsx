@@ -1,7 +1,8 @@
 import { useEffect, useState } from 'react'
 import '../css/dashboard.css';
-import axios from 'axios';
+// import axios from 'axios';
 import Image from "./Images"
+import AddCouch from './AddCouch';
 
 //FOR USERS
 // const Dashboard= () => {
@@ -41,7 +42,7 @@ import Image from "./Images"
 
 
 
-//LISTS COUCHES
+// LISTS COUCHES
 // const Dashboard= () => {
 //     // console.log("testDash");
 //     const [data, setData] = useState([]);
@@ -83,15 +84,17 @@ function ShowCouchPics(){
             const response = await fetch(`https://api.unsplash.com/collections/8700800/photos/?client_id=${unsplashApiKey}`)
             const data = await response.json()
             setImages(data)
-            console.log(data);
+            // console.log(data);
         }
         fetchImages()
     }, [])
 
     return(
+        <>
         <div className="images">
             {!images ? <h2 className='LoadingImagesText'>Loading...</h2> :
             <section className='couchList'>
+                <AddCouch />
                 <div className='couchDisplay'>
                     {images.map((image) => (
                         <Image key={image.id}{...image}/>
@@ -100,10 +103,11 @@ function ShowCouchPics(){
             </section>
             }
         </div>
+        </>
     )
     
 }
 
-// export default Dashboard; showCouchPics;
+// export default Dashboard; 
 export default ShowCouchPics;
 
