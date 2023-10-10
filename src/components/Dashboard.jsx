@@ -3,6 +3,8 @@ import '../css/dashboard.css';
 // import axios from 'axios';
 import Image from "./Images"
 import AddCouch from './AddCouch';
+import ShowCouchPics from './ShowCouchPics';
+
 
 //FOR USERS
 // const Dashboard= () => {
@@ -42,72 +44,36 @@ import AddCouch from './AddCouch';
 
 
 
-// LISTS COUCHES
-// const Dashboard= () => {
-//     // console.log("testDash");
-//     const [data, setData] = useState([]);
-//     useEffect(() => {
-//         fetch("https://capstone-backend-beta.vercel.app/couches")
-//         .then((res) => res.json())
-//         .then((responseData) => {
-//             console.log(responseData); // Log the API response data
-//             setData(responseData);
-//          })
-//          .catch((error) => {
-//             console.error("Error fetching data:", error);
-//         });
-//     }, []);
-  
-//    return (
-//     <div className='couches'>
-//         {Array.isArray(data) ? (
-//             data.map((couches) => ( 
-//                 <h2 key={couches.id}>{couches.material}{couches.color}</h2>
-//             ))
-//         ) : (
-//             <p>No data available.</p>
-//         )}
-//     </div>
-//    );
-
-  
-// };
-
-function ShowCouchPics(){
-
-    const [images, setImages] = useState([]);
-    const unsplashApiKey = import.meta.env.VITE_REACT_APP_UNSPLASH_API_KEY;
-
-
+//LISTS COUCHES
+const Dashboard= () => {
+    // console.log("testDash");
+    const [data, setData] = useState([]);
     useEffect(() => {
-        const fetchImages = async () => {
-            const response = await fetch(`https://api.unsplash.com/collections/8700800/photos/?client_id=${unsplashApiKey}`)
-            const data = await response.json()
-            setImages(data)
-            // console.log(data);
-        }
-        fetchImages()
-    }, [])
+        fetch("https://capstone-backend-beta.vercel.app/couches")
+        .then((res) => res.json())
+        .then((responseData) => {
+            console.log(responseData); // Log the API response data
+            setData(responseData);
+         })
+         .catch((error) => {
+            console.error("Error fetching data:", error);
+        });
+    }, []);
+  
+   return (
+    <div className='couches'>
+        {Array.isArray(data) ? (
 
-    return(
-        <>
-        <div className="images">
-            {!images ? <h2 className='LoadingImagesText'>Loading...</h2> :
-            <section className='couchList'>
-                <AddCouch />
-                <div className='couchDisplay'>
-                    {images.map((image) => (
-                        <Image key={image.id}{...image}/>
-                    ))}
-                </div>
-            </section>
-            }
-        </div>
-        </>
-    )
-    
-}
+            <ShowCouchPics data={data} setData={setData}/>
 
-// export default Dashboard; 
-export default ShowCouchPics;
+        ) : (
+            <p>No data available.</p>
+        )}
+    </div>
+   );
 
+  
+};
+
+
+export default Dashboard; 

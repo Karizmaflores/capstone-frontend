@@ -1,14 +1,20 @@
 import axios from "axios";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import '../css/addCouch.css';
 
 const AddCouch = ({ token, user, couches, setCouches }) => {
   const [couchData, setCouchData] = useState({
-    material: "",
+    material: "suede",
     color: "",
     wear: "",
     age: "",
   });
+
+  useEffect(()=>{
+    console.log(couchData)
+  },[couchData])
+
+  console.log(couchData, 'couchData')
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -23,13 +29,13 @@ const AddCouch = ({ token, user, couches, setCouches }) => {
 
     axios
       .post(
-        "https://capstone-backend-beta.vercel.app/couches",
+        "https://capstone-backend-beta.vercel.app/create-couch",
         {
           material: couchData.material,
           color: couchData.color,
           wear: couchData.wear,
           age: couchData.age,
-          user_id: user.id,
+          // user_id: user.id,
         },
         {
           headers: {
@@ -39,7 +45,7 @@ const AddCouch = ({ token, user, couches, setCouches }) => {
       )
       .then((response) => {
         console.log("Succesfully added couch");
-        setCouches([...couches, response.data]);
+        setCouches([...couches, couchData]);
         setCouchData({
           material: "",
           color: "",
@@ -62,7 +68,8 @@ return (
           onChange={handleChange}
           required
         >
-          <option value='leather'>Leather</option>
+          <option value=''  >Select an Option</option>
+          <option value='leather' default>Leather</option>
           <option value='cloth'>Cloth</option>
           <option value='microfiber'>Microfiber</option>
           <option value='linen'>Linen</option>
