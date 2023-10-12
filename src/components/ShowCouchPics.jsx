@@ -7,7 +7,7 @@ import AddCouch from "./AddCouch";
 function ShowCouchPics(props) {
   const [images, setImages] = useState([]);
   const unsplashApiKey = import.meta.env.VITE_REACT_APP_UNSPLASH_API_KEY;
-  console.log(props.setData, 'props.setData');
+  console.log(props.setData, "props.setData");
 
   useEffect(() => {
     const fetchImages = async () => {
@@ -28,15 +28,17 @@ function ShowCouchPics(props) {
           <h2 className="LoadingImagesText">Loading...</h2>
         ) : (
           <section className="couchList">
-            <AddCouch couches={props.data} setCouches={props.setData}/>
+            <AddCouch couches={props.data} setCouches={props.setData} />
             <div className="couchDisplay">
               {props.data &&
                 props.data.map((couch, index) => (
-                    <div key={index}>
-                      
+                  <div key={index}>
                     <h2>{couch.material}</h2>
 
-                    <Image key={images[Math.floor(Math.random() * 10)].id}{...images[Math.floor(Math.random() * 10)]}/>
+                    <Image
+                      key={images[Math.floor(Math.random() * 10)].id}
+                      {...images[Math.floor(Math.random() * 10)]}
+                    />
                   </div>
                 ))}
             </div>

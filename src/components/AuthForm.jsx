@@ -8,14 +8,14 @@ const signupContent = {
   title: "Signup",
   route: "signup",
   buttonText: "Signup!",
-  message: "Not registered? Sign up here."
+  message: "Not registered? Sign up here.",
 };
 
 const signinContent = {
   title: "Signin",
   route: "signin",
   buttonText: "Signin!",
-  message: "New here? Sign up!"
+  message: "New here? Sign up!",
 };
 
 const AuthForm = ({ formType, setToken }) => {
@@ -74,7 +74,6 @@ const AuthForm = ({ formType, setToken }) => {
 
       <input type="submit" value={content.buttonText} />
       <Link to="/signup">{content.message}</Link>
-      {/* ternanry to sign in link*/}
     </form>
   );
 };

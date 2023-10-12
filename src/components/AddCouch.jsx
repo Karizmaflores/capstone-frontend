@@ -1,6 +1,6 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
-import '../css/addCouch.css';
+import "../css/addCouch.css";
 
 const AddCouch = ({ token, user, couches, setCouches }) => {
   const [couchData, setCouchData] = useState({
@@ -10,11 +10,11 @@ const AddCouch = ({ token, user, couches, setCouches }) => {
     age: "",
   });
 
-  useEffect(()=>{
-    console.log(couchData)
-  },[couchData])
+  useEffect(() => {
+    console.log(couchData);
+  }, [couchData]);
 
-  console.log(couchData, 'couchData')
+  console.log(couchData, "couchData");
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -58,80 +58,82 @@ const AddCouch = ({ token, user, couches, setCouches }) => {
       });
   };
 
-return (
-    <form className='form' onSubmit={handleSubmit}>
-      <label className='label'>
+  return (
+    <form className="form" onSubmit={handleSubmit}>
+      <label className="label">
         Material:
-        <select className='select'
-          name='material'
+        <select
+          className="select"
+          name="material"
           value={couchData.material}
           onChange={handleChange}
           required
         >
-          <option value=''  >Select an Option</option>
-          <option value='leather' default>Leather</option>
-          <option value='cloth'>Cloth</option>
-          <option value='microfiber'>Microfiber</option>
-          <option value='linen'>Linen</option>
-          <option value='suede'>Suede</option>
-        
+          <option value="">Select an Option</option>
+          <option value="leather" default>
+            Leather
+          </option>
+          <option value="cloth">Cloth</option>
+          <option value="microfiber">Microfiber</option>
+          <option value="linen">Linen</option>
+          <option value="suede">Suede</option>
         </select>
       </label>
 
-      <label className='label'>
+      <label className="label">
         Color:
-        <select className='select'
-          name='color'
+        <select
+          className="select"
+          name="color"
           value={couchData.color}
           onChange={handleChange}
           required
         >
-          <option value='black'>Black</option>
-          <option value='gray'>Gray</option>
-          <option value='brown'>Brown</option>
-          <option value='white'>White</option>
-          <option value='blue'>Blue</option>
-          <option value='red'>Red</option>
-          
+          <option value="black">Black</option>
+          <option value="gray">Gray</option>
+          <option value="brown">Brown</option>
+          <option value="white">White</option>
+          <option value="blue">Blue</option>
+          <option value="red">Red</option>
         </select>
       </label>
 
-      <label className='label'>
+      <label className="label">
         wear:
-        <select className='select'
-          name='wear'
+        <select
+          className="select"
+          name="wear"
           value={couchData.wear}
           onChange={handleChange}
           required
         >
-          <option value='new'>New</option>
-          <option value='great'>Great</option>
-          <option value='good'>Good</option>
-          <option value='fair'>Fair</option>
-          <option value='poor'>Poor</option>
-        
+          <option value="new">New</option>
+          <option value="great">Great</option>
+          <option value="good">Good</option>
+          <option value="fair">Fair</option>
+          <option value="poor">Poor</option>
         </select>
       </label>
 
-      <label className='label'>
+      <label className="label">
         Age:
-        <select className='select'
-          name='age'
+        <select
+          className="select"
+          name="age"
           value={couchData.age}
           onChange={handleChange}
           required
         >
-          <option value='0'>New</option>
-          <option value='1'>1 year</option>
-          <option value='2'>2 years</option>
-          <option value='3'>3 years</option>
-          <option value='4'>4 years</option>
-          <option value='5'>5 years</option>
-          
+          <option value="0">New</option>
+          <option value="1">1 year</option>
+          <option value="2">2 years</option>
+          <option value="3">3 years</option>
+          <option value="4">4 years</option>
+          <option value="5">5 years</option>
         </select>
       </label>
 
-      <button className='submit' type='submit'>
+      <button className="submit" type="submit">
         Add Couch
       </button>
     </form>

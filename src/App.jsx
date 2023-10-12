@@ -1,15 +1,13 @@
 // import { useEffect, useState} from 'react';
-import { useState} from 'react';
-import {Routes, Route, Navigate} from "react-router-dom";
-import './App.css'
-import AuthForm from './components/AuthForm';
-import Dashboard from './components/Dashboard';
-import Header from './components/Header';
-
-
+import { useState } from "react";
+import { Routes, Route, Navigate } from "react-router-dom";
+import "./App.css";
+import AuthForm from "./components/AuthForm";
+import Dashboard from "./components/Dashboard";
+import Header from "./components/Header";
 
 const checkAuth = (token) => {
-  if(token.length) {
+  if (token.length) {
     return true;
   }
 
@@ -17,13 +15,13 @@ const checkAuth = (token) => {
 };
 
 const ProtectedRoute = (props) => {
-  const {component: Component, token, ...rest} = props;
+  const { component: Component, token, ...rest } = props;
 
   return checkAuth(token) === true ? (
-  <Component {...rest} />
-   ) : ( 
-   <Navigate to="/signin" />
-   );
+    <Component {...rest} />
+  ) : (
+    <Navigate to="/signin" />
+  );
 };
 
 function App() {
@@ -31,15 +29,20 @@ function App() {
 
   return (
     <>
-    <Header />
+      <Header />
       <Routes>
         <Route path="/signup" element={<AuthForm formType="signup" />} />
-        <Route path="/signin" element={<AuthForm setToken={setToken} formType="signin" />} />
-        <Route path="/" element={<ProtectedRoute 
-        component={Dashboard} token={token} />} />
+        <Route
+          path="/signin"
+          element={<AuthForm setToken={setToken} formType="signin" />}
+        />
+        <Route
+          path="/"
+          element={<ProtectedRoute component={Dashboard} token={token} />}
+        />
       </Routes>
     </>
-  )
+  );
 }
 
-export default App
+export default App;

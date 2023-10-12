@@ -1,45 +1,42 @@
 .header-container {
-    display: flex;
-    justify-content: space-between; 
-    align-items: center;
-    background-color: #ffffff; 
-    padding: 10px; 
-    margin: 0px;
-  }
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #ffffff;
+  padding: 10px;
+  margin: 0px;
+}
 
-  h1 {
-    margin: 0; 
-    font-family: 'Open Sans', sans-serif;
-    color: rgb(0, 0, 0);
-    font-size: 24px; 
-  }
+h1 {
+  margin: 0;
+  font-family: "Open Sans", sans-serif;
+  color: rgb(0, 0, 0);
+  font-size: 24px;
+}
 
 .navbar {
-    padding: 10px; 
-    display: flex; 
-    margin: 0px;
-  }
-  
+  padding: 10px;
+  display: flex;
+  margin: 0px;
+}
 
-  .navbar ul {
-    list-style-type: none;
-    margin: 0;
-    padding: 0;
-    display: flex;
-  }
-  
-  .navbar li {
-    margin-right: 20px; 
-  }
-  
+.navbar ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+}
 
-  .navbar li a {
-    text-decoration: none;
-    color: rgb(0, 0, 0);
-    font-family: 'Open Sans', sans-serif;
-  }
-  
+.navbar li {
+  margin-right: 20px;
+}
 
-  .navbar li a:hover {
-    color: #007bff; 
-  }
+.navbar li a {
+  text-decoration: none;
+  color: rgb(0, 0, 0);
+  font-family: "Open Sans", sans-serif;
+}
+
+.navbar li a:hover {
+  color: #007bff;
+}

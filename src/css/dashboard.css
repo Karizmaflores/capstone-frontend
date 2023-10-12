@@ -1,8 +1,7 @@
-.couchDisplay{
-    display: grid;
-    gap:24px;
-    justify-content: center;
-    grid-template-columns: auto auto auto;
-    grid-template-rows: min-content 1 fr;
-  }
-  
+.couchDisplay {
+  display: grid;
+  gap: 24px;
+  justify-content: center;
+  grid-template-columns: auto auto auto;
+  grid-template-rows: min-content 1 fr;
+}
