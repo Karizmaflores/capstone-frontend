@@ -7,6 +7,7 @@
 }
 
 .label {
+  padding-top: 20px;
   font-family: "Open Sans", sans-serif;
   display: block;
 }
@@ -33,4 +34,9 @@
 .submit:hover {
   cursor: pointer;
   background-color: rgba(0, 0, 0, 0.05);
+}
+
+a{
+  padding-top: 50px;
+  padding-bottom: 20px;
 }
